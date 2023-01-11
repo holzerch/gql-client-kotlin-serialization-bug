@@ -1,42 +1,6 @@
-mutation CreateFulfilmentOption($input: CreateFulfilmentOptionInput!, $executionMode: ExecutionMode ) {
-  createFulfilmentOption(input: $input, executionMode: $executionMode) {
+mutation CreateSetting($input: CreateSettingInput!) {
+  createSetting(input: $input) {
     id
-    orderType
-    type
-    status
-    locationRef
-    ref
-    retailerId
-    workflowRef
-    plans {
-      edges {
-        node {
-          id
-          ref
-          type
-          splitCount
-          attributes {
-            name
-            value
-            type
-          }
-          fulfilments {
-            locationRef
-            fulfilmentType
-            items {
-              productRef
-              catalogueRef
-              requestedQuantity
-              availableQuantity
-            }
-          }
-        }
-      }
-    }
-    attributes {
-      name
-      type
-      value
-    }
+    name
   }
 }
