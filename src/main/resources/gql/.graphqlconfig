@@ -1,0 +1,4 @@
+{
+  "name": "Fluent GraphQL Schema",
+  "schemaPath": "fluent-schema.graphql"
+}

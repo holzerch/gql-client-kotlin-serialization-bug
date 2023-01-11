@@ -1,0 +1,18 @@
+type Query {
+  setting(
+    id: ID
+  ): Setting
+}
+type Setting {
+  id: ID!
+  name: String
+}
+
+type Mutation {
+  createSetting(input: CreateSettingInput): Setting
+}
+
+input CreateSettingInput {
+  id: String!
+  name: String
+}
