@@ -1,12 +1,13 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("org.springframework.boot") version "3.0.1"
-    id("io.spring.dependency-management") version "1.1.0"
-    id("com.expediagroup.graphql") version "7.0.0-alpha.0"
-    kotlin("jvm") version "1.7.21"
-    kotlin("plugin.spring") version "1.7.21"
-    kotlin("plugin.serialization") version "1.7.21"
+    val kotlinVersion = "1.9.20"
+    id("org.springframework.boot") version "3.1.5"
+    id("io.spring.dependency-management") version "1.1.3"
+    id("org.graalvm.buildtools.native") version "0.9.28"
+    id("com.expediagroup.graphql") version "7.0.2"
+    kotlin("jvm") version kotlinVersion
+    kotlin("plugin.spring") version kotlinVersion
 }
 
 group = "gql.client.bug"
@@ -22,12 +23,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
-    implementation("com.expediagroup:graphql-kotlin-spring-client:7.0.0-alpha.0") {
-        exclude("com.expediagroup", "graphql-kotlin-client-jackson")
-    }
-    implementation("com.expediagroup:graphql-kotlin-client-serialization:7.0.0-alpha.0")
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
-
+    implementation("com.expediagroup:graphql-kotlin-spring-client:7.0.2")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
@@ -36,7 +32,6 @@ graphql {
         packageName = "gql.client.bug"
         schemaFile = file("${project.projectDir}/src/main/resources/gql/test-schema.graphql")
         queryFileDirectory = "${project.projectDir}/src/main/resources/gql/queries"
-        serializer = com.expediagroup.graphql.plugin.gradle.config.GraphQLSerializer.KOTLINX
     }
 }
 
